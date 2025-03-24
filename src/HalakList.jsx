@@ -24,25 +24,27 @@ export const HalakList = () => {
 
     return (
         <div className="container mt-5">
-            <h2 className="text-center">Halak</h2>
-            {isPending ? (<div className="spinner-border"></div>) : (
+            <h2 className="text-center text-dark">Halak</h2>
+            {isPending ? (
+                <div className="spinner-border text-dark"></div>
+            ) : (
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {halak.map((hal, index) => (
                         <div className="col" key={index}>
-                            <div className="card h-100">
-                                <p className="text-dark text-center">Hal neve: {hal.nev}</p>
-                                <p className="text-dark text-center">Hal faja: {hal.faj}</p>
-                                <p className="text-dark text-center">Hal mérete: {hal.meretCm}</p>
+                            <div className="card h-100 shadow-sm" style={{ borderRadius: '10px' }}>
+                                <p className="text-dark text-center fs-5">{hal.nev}</p>
+                                <p className="text-muted text-center">{hal.faj}</p>
+                                <p className="text-muted text-center">Méret: {hal.meretCm} cm</p>
                                 <div className="card-body d-flex flex-column align-items-center">
                                     {hal.imageUrl ? (
-                                        <img src={hal.imageUrl} alt={hal.nev} className="img-fluid" style={{ width: "200px" }} />
+                                        <img src={hal.imageUrl} alt={hal.nev} className="img-fluid" style={{ width: "200px", borderRadius: '8px' }} />
                                     ) : (
                                         <p className="text-muted">Nincs kép elérhető</p>
                                     )}
                                 </div>
                                 <div className="text-center">
-                                    <Link to={`/hal/${hal.id}`}><i className="bi bi-text-paragraph fs-3"></i></Link>&nbsp;&nbsp;&nbsp;
-                                    <Link to={`/mod-halak/${hal.id}`}><i className="bi bi-pencil-square fs-3"></i></Link>&nbsp;&nbsp;&nbsp;
+                                    <Link to={`/hal/${hal.id}`}><i className="bi bi-text-paragraph fs-3 text-dark"></i></Link>&nbsp;&nbsp;&nbsp;
+                                    <Link to={`/mod-halak/${hal.id}`}><i className="bi bi-pencil-square fs-3 text-dark"></i></Link>&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>

@@ -30,27 +30,27 @@ const HalakSingle = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center">Hal</h2>
+      <h2 className="text-center text-dark">Hal adatok</h2>
       {isPending || !halak ? (
-        <div className="spinner-border"></div>
+        <div className="spinner-border text-dark"></div>
       ) : (
         <div className="row justify-content-center align-items-center">
           <div className="col-md-6">
-            <div className="card h-100">
-              <h3 className="text-dark text-center">Hal neve: {halak.nev}</h3>
-              <h4 className="text-dark text-center">Hal faja: {halak.faj}</h4>
-              <h4 className="text-dark text-center">Hal mérete: {halak.meretCm} cm</h4>
+            <div className="card h-100 shadow-sm" style={{ borderRadius: '10px' }}>
+              <h3 className="text-dark text-center fs-4">{halak.nev}</h3>
+              <h4 className="text-muted text-center">{halak.faj}</h4>
+              <h4 className="text-muted text-center">Méret: {halak.meretCm} cm</h4>
               <div className="card-body d-flex flex-column align-items-center">
                 {halak.imageUrl ? (
-                  <img src={halak.imageUrl} alt={halak.nev} className="img-fluid" style={{ width: "200px" }} />
+                  <img src={halak.imageUrl} alt={halak.nev} className="img-fluid" style={{ width: "300px", height: "200px", objectFit: 'cover' }} />
                 ) : (
                   <p className="text-muted">Nincs kép elérhető</p>
                 )}
               </div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-center align-items-center mt-3">
-              <Link to="/"><i className="bi bi-backspace-fill fs-3"></i></Link>&nbsp;&nbsp;&nbsp;
-              <Link to={`/mod-halak/${halakId}`}><i className="bi bi-pencil-square fs-3"></i></Link>
+              <Link to="/" className="text-dark"><i className="bi bi-backspace-fill fs-3"></i></Link>&nbsp;&nbsp;&nbsp;
+              <Link to={`/mod-halak/${halakId}`} className="text-dark"><i className="bi bi-pencil-square fs-3"></i></Link>
             </div>
           </div>
         </div>
